@@ -37,13 +37,6 @@ I build production-ready systems — from backend architecture and frontend UI t
 
 ---
 
-## 📊 GitHub Activity
-
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=japhry&show_icons=true&theme=tokyonight&hide_border=true" height="160"/>
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=japhry&theme=tokyonight&hide_border=true" height="160"/>
-</p>
-
 ---
 
 ## 🏗 Engineering Approach
