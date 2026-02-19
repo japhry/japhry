@@ -10,7 +10,7 @@ I build production-ready systems — from backend architecture and frontend UI t
 ## ⚡ Core Stack
 
 <p align="center">
-  <img src="https://skillicons.dev/icons?i=php,laravel,react,vue,flutter,js,ts,mysql,postgres,linux,git" />
+  <img src="https://skillicons.dev/icons?i=php,laravel,react,vue,flutter,dart,kotlin,js,ts,mysql,postgres,linux,c,git" />
 </p>
 
 ---
