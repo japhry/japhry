@@ -38,5 +38,5 @@
 
 ## 📫 Let's Connect
 
-- Email: your@email.com
-- Portfolio: yoursite.com
+- Email: info@pixellinx.co.tz
+- Portfolio: www.pixellinx.co.tz
