@@ -1,40 +1,43 @@
 <h1 align="center">Hi 👋, I'm Japhary</h1>
-<h3 align="center">Full-Stack Engineer | Laravel • React • Vue • Flutter | Server Enthusiast</h3>
+<h3 align="center">Full-Stack Engineer • Laravel • React • Vue • Flutter</h3>
 
 <p align="center">
-I build scalable web & mobile applications — from backend architecture to frontend UI and live deployment.
+I build production-ready systems — from backend architecture and frontend UI to live server deployment.
 </p>
 
 ---
 
-## 🧠 Core Tech Stack
+## ⚡ Core Stack
 
 <p align="center">
-  <img src="https://skillicons.dev/icons?i=php,laravel,react,vue,flutter,js,ts,postgres,mysql,linux,git" />
+  <img src="https://skillicons.dev/icons?i=php,laravel,react,vue,flutter,js,ts,mysql,postgres,linux,git" />
 </p>
 
 ---
 
-## 💼 What I Actually Do
+## 🧠 What I Build
 
-- ⚙️ Build RESTful APIs with Laravel  
-- 🖥️ Create performant frontends in React & Vue  
-- 📱 Develop cross-platform apps with Flutter  
-- 🚀 Deploy & manage Linux servers (VPS, Apache, SSL)  
-- 🔐 Build secure authentication & data flows  
-- 🔁 Use Git + GitHub for collaborative workflows
-
----
-
-### 🔹 **Server Deployment Guide**
-👉 A repo that shows server setup steps  
-- Linux Server setup  
-- Apache/Nginx configuration  
-- SSL + Domain management
+- Scalable REST APIs using Laravel  
+- Responsive and performant frontends with React & Vue  
+- Cross-platform mobile applications using Flutter  
+- Secure authentication & authorization systems  
+- Database architecture (MySQL & PostgreSQL)  
+- Production deployments on Linux VPS  
 
 ---
 
-## 📈 GitHub Stats
+## 🖥 Infrastructure & Deployment
+
+- Linux server configuration & hardening  
+- Apache / Nginx setup  
+- SSL certificates & domain management  
+- Environment configuration & production builds  
+- Database provisioning & optimization  
+- Git-based deployment workflows  
+
+---
+
+## 📊 GitHub Activity
 
 <p align="center">
   <img src="https://github-readme-stats.vercel.app/api?username=japhry&show_icons=true&theme=tokyonight&hide_border=true" height="160"/>
@@ -43,16 +46,27 @@ I build scalable web & mobile applications — from backend architecture to fron
 
 ---
 
-## 🎯 2026 Focus
+## 🏗 Engineering Approach
 
-- Launch a real SaaS product  
-- Grow presence in open-source  
-- Strengthen DevOps, Automation & CI/CD  
-- Publish industry-quality projects
+- Clean Architecture  
+- API-First Development  
+- Scalable System Design  
+- Secure Data Flow  
+- Performance Optimization  
+- Maintainable Codebases  
 
 ---
 
-## 📫 Contact
+## 🎯 2026 Focus
 
-- 🌐 Portfolio: https://pixellinx.co.tz  
-- 📧 Email: info@pixellinx.co.tz
+- Launch a production-grade SaaS product  
+- Contribute consistently to open-source  
+- Deepen DevOps & automation expertise  
+- Build systems with real-world impact  
+
+---
+
+## 📫 Connect
+
+🌍 Portfolio: https://pixellinx.co.tz  
+📧 Email: info@pixellinx.co.tz
