@@ -36,7 +36,20 @@ I build production-ready systems — from backend architecture and frontend UI t
 - Git-based deployment workflows  
 
 ---
+## 📊 GitHub Stats
 
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=japhry&show_icons=true&theme=default&hide_border=true&count_private=true" alt="GitHub Stats" width="400" />
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=japhry&theme=default&hide_border=true" alt="GitHub Streak" width="400" />
+</p>
+
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=japhry&layout=compact&theme=default&hide_border=true&langs_count=8" alt="Top Languages" />
+</p>
+
+<p align="center">
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=japhry&theme=default&hide_border=true" alt="Contribution Graph" />
+</p>
 ---
 
 ## 🏗 Engineering Approach
