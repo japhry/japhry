@@ -39,6 +39,7 @@ I build production-ready systems — from backend architecture and frontend UI t
 ## 📊 GitHub Stats
 
 
+<!--
 <p align="center">
   <img src="https://img.shields.io/github/followers/japhry?style=for-the-badge&labelColor=0D1117&color=238636" alt="Followers" />
   ...
@@ -49,6 +50,7 @@ I build production-ready systems — from backend architecture and frontend UI t
 <p align="center">
   <img src="https://github-readme-activity-graph.vercel.app/graph?username=japhry&theme=react-dark&hide_border=true&bg_color=0D1117&color=238636&line=38BCF7&point=FFFFFF" alt="Contribution Graph" width="100%" />
 </p>
+-->
 
 ---
 
