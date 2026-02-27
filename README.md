@@ -56,14 +56,18 @@
   <img src="https://img.shields.io/badge/Focus-Full--Stack%20%26%20DevOps-0D1117?style=for-the-badge&labelColor=0D1117&color=38BCF7" />
 </p>
 
-<p align="center">
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=japhry&theme=dark&hide_border=true&background=0D1117&ring=238636&fire=FF6B35&currStreakLabel=FFFFFF&sideLabels=38BCF7&dates=888888" alt="GitHub Streak" width="500" />
-</p>
+<br/>
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=japhry&show_icons=true&theme=dark&hide_border=true&bg_color=0D1117&title_color=238636&icon_color=38BCF7&text_color=FFFFFF&ring_color=238636" alt="GitHub Stats" width="420" />
+  <img src="https://streak-stats.demolab.com?user=japhry&theme=dark&hide_border=true&background=0D1117&ring=238636&fire=FF6B35&currStreakLabel=FFFFFF&sideLabels=38BCF7&dates=888888&stroke=238636" alt="GitHub Streak" width="500" />
+</p>
+
+<br/>
+
+<p align="center">
+  <img height="165" src="https://github-readme-stats.vercel.app/api?username=japhry&show_icons=true&theme=github_dark&hide_border=true&bg_color=0D1117&title_color=238636&icon_color=38BCF7&text_color=FFFFFF&count_private=true&include_all_commits=true" alt="GitHub Stats" />
   &nbsp;
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=japhry&layout=compact&theme=dark&hide_border=true&bg_color=0D1117&title_color=238636&text_color=FFFFFF" alt="Top Languages" width="300" />
+  <img height="165" src="https://github-readme-stats.vercel.app/api/top-langs/?username=japhry&layout=compact&theme=github_dark&hide_border=true&bg_color=0D1117&title_color=238636&text_color=FFFFFF&langs_count=8" alt="Top Languages" />
 </p>
 
 ---
@@ -71,7 +75,7 @@
 ## 🏆 Achievements
 
 <p align="center">
-  <img src="https://github-profile-trophy.vercel.app/?username=japhry&theme=darkhub&no-frame=true&no-bg=true&column=4&margin-w=8&margin-h=8&title=Stars,Commits,Repositories,Followers" alt="GitHub Trophies" />
+  <img src="https://github-profile-trophy.vercel.app/?username=japhry&theme=darkhub&no-frame=true&no-bg=true&column=4&margin-w=10&margin-h=10" alt="GitHub Trophies" />
 </p>
 
 ---
