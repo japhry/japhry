@@ -38,19 +38,9 @@ I build production-ready systems — from backend architecture and frontend UI t
 ---
 ## 📊 GitHub Stats
 
-
-
-<p align="center">
-  <img src="https://img.shields.io/github/followers/japhry?style=for-the-badge&labelColor=0D1117&color=238636" alt="Followers" />
-  ...
-</p>
 <p align="center">
   <img src="https://github-readme-streak-stats.herokuapp.com/?user=japhry&theme=dark&hide_border=true&background=0D1117&ring=238636&fire=FF6B35&currStreakLabel=FFFFFF" alt="GitHub Streak" width="500" />
 </p>
-<p align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=japhry&theme=react-dark&hide_border=true&bg_color=0D1117&color=238636&line=38BCF7&point=FFFFFF" alt="Contribution Graph" width="100%" />
-</p>
-
 
 ---
 
