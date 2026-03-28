@@ -1,0 +1,55 @@
+# Apache configuration for Advanced Garage Management System
+# Located in project root - to ensure requests to 'public' are handled correctly if needed
+# and to block access to non-public directories.
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # If the request is not for an existing file or directory in the root,
+  # and it's not directly for the public directory,
+  # rewrite to the public directory.
+  # This helps if the server's DocumentRoot is set to the project root
+  # instead of the public/ directory.
+  # RewriteRule ^$ public/ [L]
+  # RewriteCond %{REQUEST_FILENAME} !-f
+  # RewriteCond %{REQUEST_FILENAME} !-d
+  # RewriteCond %{REQUEST_URI} !^/public/
+  # RewriteRule ^(.*)$ public/$1 [L]
+
+  # It's generally better to set DocumentRoot to public/ if possible.
+  # If DocumentRoot is already public/, this file might not be strictly necessary,
+  # but can provide an extra layer of security.
+</IfModule>
+
+# Deny access to all files and directories outside of 'public/' by default.
+# This is a security measure.
+# For Apache 2.4
+<IfModule mod_authz_core.c>
+  Require all denied
+</IfModule>
+
+# For Apache 2.2
+<IfModule !mod_authz_core.c>
+  Order deny,allow
+  Deny from all
+</IfModule>
+
+# Allow access only to the 'public' directory.
+# This directive should be placed in the server's main configuration or a VirtualHost block
+# if possible, but can be approximated here.
+# <Directory "/path/to/your/project/public">
+# For Apache 2.4
+#   <IfModule mod_authz_core.c>
+#     Require all granted
+#   </IfModule>
+# For Apache 2.2
+#   <IfModule !mod_authz_core.c>
+#     Order allow,deny
+#     Allow from all
+#   </IfModule>
+# </Directory>
+
+# Note: The best practice is to set your web server's DocumentRoot
+# to the 'public' directory. This .htaccess file in the root
+# is a fallback or an additional security layer to prevent direct web access
+# to files outside 'public/'.
