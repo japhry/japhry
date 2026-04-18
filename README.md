@@ -7,7 +7,7 @@ I build production-ready systems — from backend architecture and frontend UI t
 
 ---
 
-## ⚡ Core Stack
+## Core Stack
 
 <p align="center">
   <img src="https://skillicons.dev/icons?i=php,laravel,react,vue,flutter,dart,kotlin,js,ts,mysql,postgres,linux,c,git" />
@@ -15,7 +15,7 @@ I build production-ready systems — from backend architecture and frontend UI t
 
 ---
 
-## 🧠 What I Build
+## What I Build
 
 - Scalable REST APIs using Laravel  
 - Responsive and performant frontends with React & Vue  
@@ -26,7 +26,7 @@ I build production-ready systems — from backend architecture and frontend UI t
 
 ---
 
-## 🖥 Infrastructure & Deployment
+## Infrastructure & Deployment
 
 - Linux server configuration & hardening  
 - Apache / Nginx setup  
@@ -36,7 +36,7 @@ I build production-ready systems — from backend architecture and frontend UI t
 - Git-based deployment workflows  
 
 ---
-## 📊 GitHub Stats
+## GitHub Stats
 
 <p align="center">
   <img src="https://github-readme-streak-stats.herokuapp.com/?user=japhry&theme=dark&hide_border=true&background=0D1117&ring=238636&fire=FF6B35&currStreakLabel=FFFFFF" alt="GitHub Streak" width="500" />
@@ -44,7 +44,7 @@ I build production-ready systems — from backend architecture and frontend UI t
 
 ---
 
-## 🏗 Engineering Approach
+## Engineering Approach
 
 - Clean Architecture  
 - API-First Development  
@@ -55,16 +55,16 @@ I build production-ready systems — from backend architecture and frontend UI t
 
 ---
 
-## 🎯 2026 Focus
+## 2026 Focus
 
-- Launch a production-grade SaaS product  
+- Launch a production-grade SaaS products  
 - Contribute consistently to open-source  
 - Deepen DevOps & automation expertise  
 - Build systems with real-world impact  
 
 ---
 
-## 📫 Connect
+## Connect
 
 🌍 Portfolio: https://pixellinx.co.tz  
 📧 Email: info@pixellinx.co.tz
