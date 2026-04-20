@@ -1,0 +1,27 @@
+# Apache configuration for Advanced Garage Management System
+# Located in public/
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Redirect Trailing Slashes If Not A Folder...
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_URI} (.+)/$
+  RewriteRule ^ %1 [L,R=301]
+
+  # Send Requests To Front Controller (index.php)
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteRule ^ index.php [L]
+</IfModule>
+
+# Optional: Deny access to sensitive files if any are placed here by mistake
+# <Files ".env">
+#   Require all denied
+# </Files>
+# <FilesMatch "\.(bak|config|sql|fla|psd|ini|log|sh|inc|swp|dist)|~">
+#  Require all denied
+# </FilesMatch>
+
+# Optional: Set default charset
+AddDefaultCharset UTF-8
