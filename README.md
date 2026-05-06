@@ -39,13 +39,11 @@ I build production-ready systems — from backend architecture and frontend UI t
 
 ## GitHub Streak Stats
 
-<p align="center">
-  <img 
-    src="https://streak-stats.demolab.com?user=japhry&theme=dark&hide_border=true&background=0D1117&ring=238636&fire=FF6B35&currStreakLabel=FFFFFF" 
-    alt="GitHub Streak" 
-    width="500" 
-  />
-</p>
+---
+
+## GitHub Streak Stats
+
+[![GitHub Streak](https://github-readme-streak-stats-eight.vercel.app?user=japhry&theme=dark&hide_border=true&background=0D1117&ring=238636&fire=FF6B35&currStreakLabel=FFFFFF)](https://git.io/streak-stats)
 
 ---
 
