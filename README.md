@@ -36,10 +36,15 @@ I build production-ready systems — from backend architecture and frontend UI t
 - Git-based deployment workflows  
 
 ---
-## GitHub Stats
+
+## GitHub Streak Stats
 
 <p align="center">
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=japhry&theme=dark&hide_border=true&background=0D1117&ring=238636&fire=FF6B35&currStreakLabel=FFFFFF" alt="GitHub Streak" width="500" />
+  <img 
+    src="https://streak-stats.demolab.com?user=japhry&theme=dark&hide_border=true&background=0D1117&ring=238636&fire=FF6B35&currStreakLabel=FFFFFF" 
+    alt="GitHub Streak" 
+    width="500" 
+  />
 </p>
 
 ---
