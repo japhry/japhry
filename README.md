@@ -37,8 +37,6 @@ I build production-ready systems — from backend architecture and frontend UI t
 
 ---
 
-## GitHub Streak Stats
-
 ---
 
 ## GitHub Streak Stats
