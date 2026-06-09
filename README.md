@@ -2,7 +2,7 @@
 <h3 align="center">Full-Stack Engineer • Laravel • React • Vue • Flutter</h3>
 
 <p align="center">
-I build production-ready systems — from backend architecture and frontend UI to live server deployment.
+I build production-ready systems, from backend architecture and frontend UI to live server deployment.
 </p>
 
 ---
@@ -68,4 +68,4 @@ I build production-ready systems — from backend architecture and frontend UI t
 ## Connect
 
 🌍 Portfolio: https://pixellinx.co.tz  
-📧 Email: info@pixellinx.co.tz
+📧 Email: japhry.me@gmail.com
