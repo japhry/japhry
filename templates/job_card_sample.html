@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>GARAGE Tanzania - Premium Invoice</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+
+    body {
+      background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+      padding: 30px 20px;
+      font-family: 'Roboto', sans-serif;
+      color: #333;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .invoice-container {
+      max-width: 850px;
+      width: 100%;
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.18);
+      border-radius: 12px;
+      background: white;
+      transform: translateY(0);
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
+
+    .invoice-header {
+      background: linear-gradient(135deg, #eb0a1e 0%, #c00615 100%);
+      color: white;
+      padding: 25px 40px;
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 4px solid #a80512;
+    }
+
+    .header-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><ellipse cx="50" cy="50" rx="45" ry="25" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="2"/></svg>');
+      background-size: 120px;
+      opacity: 0.6;
+    }
+
+    .company-info {
+      flex: 1;
+      line-height: 1.6;
+      position: relative;
+      z-index: 2;
+    }
+
+    .company-info h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      letter-spacing: 0.8px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .company-info div {
+      font-size: 13px;
+      opacity: 0.9;
+    }
+
+    .document-type {
+      background: white;
+      color: #eb0a1e;
+      padding: 10px 25px;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .watermark {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-30deg);
+      font-size: 140px;
+      color: rgba(0,0,0,0.03);
+      font-weight: 800;
+      pointer-events: none;
+      white-space: nowrap;
+      z-index: 0;
+      font-family: 'Montserrat', sans-serif;
+      text-transform: uppercase;
+    }
+
+    .invoice-body {
+      position: relative;
+      z-index: 1;
+      padding: 35px 40px 25px;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect x="45" y="0" width="10" height="10" fill="rgba(235,10,30,0.03)"/></svg>');
+    }
+
+    .invoice-details {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+
+    .detail-box {
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 20px;
+      background: #f9f9f9;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .detail-box:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 100%;
+      background: #eb0a1e;
+    }
+
+    .detail-box h3 {
+      font-size: 15px;
+      text-transform: uppercase;
+      color: #555;
+      margin-bottom: 15px;
+      letter-spacing: 0.8px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+    }
+
+    .detail-box h3 svg {
+      margin-right: 10px;
+    }
+
+    .invoice-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+
+    .invoice-grid div {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .invoice-grid label {
+      font-size: 12px;
+      color: #777;
+      margin-bottom: 5px;
+      font-weight: 500;
+    }
+
+    .invoice-grid span {
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .highlight-info {
+      background: #e8f4ff;
+      border-left: 3px solid #0066cc;
+      padding: 10px 15px;
+      margin: 20px 0;
+      border-radius: 0 4px 4px 0;
+      font-size: 13px;
+    }
+
+    .highlight-info strong {
+      color: #0066cc;
+    }
+
+    .items-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 30px 0 35px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .items-table th {
+      background: linear-gradient(to bottom, #f5f5f5, #e9e9e9);
+      padding: 15px;
+      text-align: left;
+      font-weight: 600;
+      font-size: 13px;
+      text-transform: uppercase;
+      color: #555;
+      border-bottom: 2px solid #ddd;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .items-table td {
+      padding: 14px 15px;
+      border-bottom: 1px solid #eee;
+      font-size: 14px;
+    }
+
+    .items-table tr:nth-child(even) {
+      background-color: #fcfcfc;
+    }
+
+    .items-table tr:hover {
+      background-color: #f0f7ff;
+    }
+
+    .qty, .price, .total {
+      text-align: right;
+    }
+
+    .total-section {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 35px;
+    }
+
+    .total-box {
+      width: 320px;
+      background: #f9f9f9;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+    }
+
+    .total-row {
+      display: flex;
+      padding: 14px 25px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .total-row:last-child {
+      border-bottom: none;
+    }
+
+    .total-label {
+      flex: 1;
+      font-weight: 500;
+      font-size: 14px;
+    }
+
+    .total-value {
+      width: 140px;
+      text-align: right;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .highlight {
+      background: #e8f4ff;
+      font-weight: 700;
+      color: #0066cc;
+    }
+
+    .invoice-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 25px 40px;
+      background: #f5f5f5;
+      border-top: 1px solid #e0e0e0;
+      position: relative;
+    }
+
+    .verification {
+      flex: 1;
+    }
+
+    .verification-code {
+      font-family: monospace;
+      font-size: 14px;
+      background: #fff;
+      padding: 10px 18px;
+      border-radius: 6px;
+      border: 1px dashed #ccc;
+      margin-bottom: 12px;
+      display: inline-block;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      letter-spacing: 0.5px;
+    }
+
+    .verification-link {
+      color: #0066cc;
+      font-size: 14px;
+      text-decoration: none;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+
+    .verification-link:hover {
+      color: #eb0a1e;
+      transform: translateX(5px);
+    }
+
+    .verification-link svg {
+      margin-right: 10px;
+    }
+
+    .security-features {
+      position: absolute;
+      top: 25px;
+      right: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      z-index: 3;
+    }
+
+    .security-stamp {
+      background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
+      color: white;
+      padding: 8px 25px;
+      border-radius: 4px;
+      font-size: 13px;
+      font-weight: 700;
+      transform: rotate(5deg);
+      margin-bottom: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .security-stamp:after {
+      content: "";
+      position: absolute;
+      top: -10px;
+      left: -30px;
+      width: 20px;
+      height: 60px;
+      background: rgba(255,255,255,0.3);
+      transform: rotate(25deg);
+    }
+
+    .microprint {
+      font-size: 6px;
+      color: #777;
+      text-align: center;
+      margin-top: 25px;
+      letter-spacing: 0.6px;
+      line-height: 1.8;
+      text-transform: uppercase;
+    }
+
+    .signature-area {
+      margin-top: 40px;
+      padding-top: 25px;
+      border-top: 1px dashed #ccc;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .signature-box {
+      width: 45%;
+      text-align: center;
+      position: relative;
+    }
+
+    .signature-line {
+      height: 1px;
+      background: #ccc;
+      margin: 45px 0 15px;
+      position: relative;
+    }
+
+    .signature-line:after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      background: repeating-linear-gradient(90deg, transparent, transparent 3px, #ccc 3px, #ccc 6px);
+      bottom: 5px;
+      left: 0;
+    }
+
+    .signature-label {
+      font-size: 12px;
+      color: #777;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .barcode {
+      font-family: 'Libre Barcode 39', cursive;
+      font-size: 42px;
+      text-align: center;
+      letter-spacing: 3px;
+      margin-top: 15px;
+      color: #333;
+      padding: 10px 0;
+      background: #f9f9f9;
+      border-radius: 6px;
+    }
+
+    .payment-info {
+      background: #fff9e6;
+      border: 1px solid #ffd966;
+      border-radius: 8px;
+      padding: 15px 20px;
+      margin: 25px 0;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+    }
+
+    .payment-info svg {
+      margin-right: 15px;
+      min-width: 24px;
+    }
+
+    .payment-info div {
+      flex: 1;
+    }
+
+    .payment-info strong {
+      color: #e6a000;
+    }
+
+    .company-logo {
+      position: absolute;
+      top: 30px;
+      left: 40px;
+      width: 50px;
+      height: 50px;
+      background: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+      z-index: 3;
+    }
+
+    .company-logo svg {
+      width: 32px;
+      height: 32px;
+    }
+
+    .corner-decoration {
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      bottom: -20px;
+      right: -20px;
+      background: #eb0a1e;
+      border-radius: 50%;
+      opacity: 0.08;
+      z-index: 0;
+    }
+
+    .footer-note {
+      text-align: center;
+      font-size: 12px;
+      color: #777;
+      margin-top: 20px;
+      padding: 15px;
+      background: #f9f9f9;
+      border-radius: 6px;
+    }
+
+    /* Print-specific styles */
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+        font-family: 'Arial', sans-serif; /* Use a common print font */
+        -webkit-print-color-adjust: exact !important; /* Chrome, Safari */
+        color-adjust: exact !important; /* Standard */
+      }
+      .invoice-container {
+        max-width: 100%;
+        width: 100%;
+        margin: 0;
+        box-shadow: none;
+        border-radius: 0;
+        animation: none; /* Disable animation for printing */
+        border: 1px solid #ccc; /* Add a light border for definition if needed */
+      }
+      .invoice-header {
+        background: #eb0a1e !important; /* Ensure background prints */
+        color: white !important;
+        -webkit-print-color-adjust: exact !important;
+        color-adjust: exact !important;
+      }
+      .document-type {
+        background: white !important;
+        color: #eb0a1e !important;
+        -webkit-print-color-adjust: exact !important;
+        color-adjust: exact !important;
+        box-shadow: none;
+        border: 1px solid #eb0a1e;
+      }
+      .security-stamp {
+        background: #4CAF50 !important; /* Ensure background prints */
+        color: white !important;
+        -webkit-print-color-adjust: exact !important;
+        color-adjust: exact !important;
+        box-shadow: none;
+        border: 1px solid #388E3C;
+      }
+      .items-table th {
+        background: #f0f0f0 !important; /* Lighter background for print */
+        -webkit-print-color-adjust: exact !important;
+        color-adjust: exact !important;
+      }
+      .highlight-info, .payment-info, .footer-note {
+        background: #f9f9f9 !important; /* Ensure light backgrounds print */
+        -webkit-print-color-adjust: exact !important;
+        color-adjust: exact !important;
+      }
+      .total-row.highlight {
+        background: #e8f4ff !important;
+         -webkit-print-color-adjust: exact !important;
+        color-adjust: exact !important;
+      }
+      .header-overlay, .watermark, .corner-decoration, #qrcode-top, #qrcode-bottom, .verification-link svg {
+        display: none !important; /* Hide elements not essential for print or that cause issues */
+      }
+      .verification-link {
+        color: #0066cc !important; /* Ensure link color is visible */
+      }
+       .invoice-body {
+        background: none !important; /* Remove background image for print */
+      }
+      /* Ensure all content is visible and not cut off */
+      html, body {
+        width: 210mm; /* A4 width */
+        height: 297mm; /* A4 height */
+        margin: auto; /* Center page on print preview */
+      }
+      @page {
+        size: A4;
+        margin: 10mm; /* Adjust margins as needed */
+      }
+      /* Prevent page breaks inside these elements if possible */
+      .detail-box, .items-table, .total-box, .signature-area {
+        page-break-inside: avoid;
+      }
+      .items-table tr, .items-table td, .items-table th {
+        page-break-inside: avoid;
+      }
+    }
+
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Barcode+39&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="invoice-container">
+    <div class="corner-decoration"></div>
+
+    <div class="invoice-header">
+      <div class="header-overlay"></div>
+
+      <div class="company-logo">
+        <svg viewBox="0 0 24 24" fill="#eb0a1e">
+          <path d="M12,2C6.48,2,2,6.48,2,12s4.48,10,10,10s10-4.48,10-10S17.52,2,12,2z M12,20c-4.41,0-8-3.59-8-8s3.59-8,8-8s8,3.59,8,8 S16.41,20,12,20z"/>
+          <path d="M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5S14.76,7,12,7z M12,15c-1.65,0-3-1.35-3-3s1.35-3,3-3s3,1.35,3,3 S13.65,15,12,15z"/>
+        </svg>
+      </div>
+
+      <div class="company-info">
+        <h1>GARAGE TANZANIA LTD</h1>
+        <div>Nyerere Road, P.O. Box 9060, Dar es Salaam</div>
+        <div>Tel: (255) 22 2866815-9 | Fax: (255) 22 2866814</div>
+        <div>TIN: 100-146-304 VRN: 10-006645-E</div>
+      </div>
+      <div class="document-type">Internal Invoice</div> <!-- This should change to "Job Card" -->
+    </div>
+
+    <div class="watermark">GARAGE TANZANIA</div> <!-- This might change or be dynamic -->
+
+    <div class="security-features">
+      <div class="security-stamp">Certified</div> <!-- May or may not apply to job card -->
+      <div id="qrcode-top"></div>
+    </div>
+
+    <div class="invoice-body">
+      <div class="invoice-details">
+        <div class="detail-box">
+          <h3>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#555"> <!-- Icon for Garage/Branch Info -->
+               <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+            </svg>
+            Branch / Service Center
+          </h3>
+          <div class="invoice-grid">
+            <div>
+              <label>Branch Name</label>
+              <span>GARAGE TANZANIA LTD - MAIN BRANCH</span> <!-- Dynamic Data -->
+            </div>
+            <div>
+              <label>Job Card No.</label>
+              <span>JC-2025-00123</span> <!-- Dynamic Data -->
+            </div>
+            <div>
+              <label>Address</label>
+              <span>Nyerere Road, P.O. Box 9060</span> <!-- Dynamic Data -->
+            </div>
+            <div>
+              <label>Service Advisor</label>
+              <span>zmbmando</span> <!-- Dynamic Data (User) -->
+            </div>
+            <div>
+              <label>Date Received</label>
+              <span>16/05/2025</span> <!-- Dynamic Data -->
+            </div>
+            <div>
+              <label>Promised Delivery</label>
+              <span>18/05/2025</span> <!-- Dynamic Data -->
+            </div>
+          </div>
+        </div>
+
+        <div class="detail-box">
+          <h3>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#555"> <!-- Icon for Customer/Vehicle Info -->
+                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                <path d="M21.99 4c0-1.1-.89-2-1.99-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2l-1.99-9zM12 17l-4-4h8l-4 4z" opacity=".3"/> <!-- Simple car icon part -->
+                <path d="M22 18v-7c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v7c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2zm-10.5-6H18v3h-6.5V12zM4 12h5.5v3H4v-3zm-.5 4.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm17 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
+            </svg>
+            Customer & Vehicle Details
+          </h3>
+          <div class="invoice-grid">
+            <div>
+              <label>Customer Name</label>
+              <span>T/I Automark Repairs</span> <!-- Dynamic Data -->
+            </div>
+            <div>
+              <label>Vehicle Make/Model</label>
+              <span>Toyota Hilux</span> <!-- Dynamic Data -->
+            </div>
+            <div>
+              <label>Contact Phone</label>
+              <span>+255 710 123 456</span> <!-- Dynamic Data -->
+            </div>
+            <div>
+              <label>License Plate</label>
+              <span>T123 XYZ</span> <!-- Dynamic Data -->
+            </div>
+            <div>
+              <label>Customer Address</label>
+              <span>Kij Building, Sokoine Drive</span> <!-- Dynamic Data -->
+            </div>
+            <div>
+              <label>VIN Number</label>
+              <span>VN1234567890ABCDEF</span> <!-- Dynamic Data -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="highlight-info" style="background: #fff3cd; border-left-color: #ffeeba; color: #856404;">
+        <strong>Customer Complaints / Requests:</strong> <!-- Dynamic Data -->
+        <p>1. Check engine light is on.</p>
+        <p>2. Noise from front right wheel when turning.</p>
+        <p>3. Perform standard 50,000 KM service.</p>
+      </div>
+
+      <table class="items-table">
+        <thead>
+          <tr>
+            <th>Description of Services / Parts</th>
+            <th class="qty">Qty</th>
+            <th class="price">Unit Price</th>
+            <th class="total">Estimated Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Dynamic Rows for Services -->
+          <tr>
+            <td><strong>Service:</strong> Standard 50,000 KM Maintenance Package</td>
+            <td class="qty">1</td>
+            <td class="price">150,000.00</td>
+            <td class="total">150,000.00</td>
+          </tr>
+          <tr>
+            <td><strong>Service:</strong> Diagnose Check Engine Light</td>
+            <td class="qty">1</td>
+            <td class="price">45,000.00</td>
+            <td class="total">45,000.00</td>
+          </tr>
+           <tr>
+            <td><strong>Service:</strong> Inspect Front Right Wheel Noise</td>
+            <td class="qty">1</td>
+            <td class="price">30,000.00</td>
+            <td class="total">30,000.00</td>
+          </tr>
+          <!-- Dynamic Rows for Parts (if pre-approved or part of a package) -->
+          <tr>
+            <td><em>Part:</em> Oil Filter Replacement</td>
+            <td class="qty">1</td>
+            <td class="price">25,000.00</td>
+            <td class="total">25,000.00</td>
+          </tr>
+          <tr>
+            <td><em>Part:</em> Engine Oil - Synthetic (5L)</td>
+            <td class="qty">5</td>
+            <td class="price">18,000.00</td>
+            <td class="total">90,000.00</td>
+          </tr>
+          <!-- Add more items as needed -->
+        </tbody>
+      </table>
+
+      <div class="total-section">
+        <div class="total-box">
+          <div class="total-row">
+            <div class="total-label">Estimated Subtotal (Services)</div>
+            <div class="total-value">225,000.00</div> <!-- Dynamic Data -->
+          </div>
+          <div class="total-row">
+            <div class="total-label">Estimated Subtotal (Parts)</div>
+            <div class="total-value">115,000.00</div> <!-- Dynamic Data -->
+          </div>
+          <div class="total-row">
+            <div class="total-label">Discount</div>
+            <div class="total-value">0.00</div> <!-- Dynamic Data -->
+          </div>
+           <div class="total-row">
+            <div class="total-label">VAT (18%)</div>
+            <div class="total-value">61,200.00</div> <!-- Dynamic Data -->
+          </div>
+          <div class="total-row highlight">
+            <div class="total-label">Total Estimated Amount</div>
+            <div class="total-value">401,200.00</div> <!-- Dynamic Data -->
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-box" style="margin-bottom: 25px;">
+          <h3>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#555"> <!-- Icon for Mechanic Findings -->
+              <path d="M20.71 7.04c-.34-.34-.88-.34-1.22 0l-1.83 1.83L13.5 4.71l1.83-1.83c.34-.34.34-.88 0-1.22l-2.07-2.07c-.34-.34-.88-.34-1.22 0L10.22 3.5 3 10.72V14h3.28l7.22-7.22 1.83 1.83c.34.34.88.34 1.22 0l2.07-2.07c.34-.34.34-.88 0-1.22L20.71 7.04zM5 12V9.72l5-5L12.28 7 5 14.28V12zm14.71-4.92l-1.41-1.41L15 9.58l1.41 1.41L19.71 7.08z"/>
+            </svg>
+            Mechanic's Initial Findings / Recommendations
+          </h3>
+          <div style="font-size: 14px; line-height: 1.6;">
+             <p> - Check engine light due to faulty O2 sensor (Bank 1, Sensor 2). Recommend replacement.</p> <!-- Dynamic Data -->
+             <p> - Noise from front right wheel: Worn wheel bearing. Recommend replacement.</p> <!-- Dynamic Data -->
+             <p> - Standard service items checked. Air filter dirty, recommend replacement.</p> <!-- Dynamic Data -->
+             <p> - Brake pads at 50%. Advise monitoring, replacement not immediately required unless requested.</p> <!-- Dynamic Data -->
+          </div>
+      </div>
+
+      <div class="payment-info" style="background: #e2f0d9; border-left-color: #a7d78f; color: #385723;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="#385723"> <!-- Icon for Terms/Consent -->
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+        </svg>
+        <div>
+          <strong>Terms & Customer Consent:</strong> I, the undersigned, authorize the repair work set forth to be done along with the necessary material and agree that you are not responsible for loss or damage to vehicle or articles left in vehicle in case of fire, theft or any other cause beyond your control or for any delays caused by unavailability of parts or delays in parts shipments by the supplier or transporter. I hereby grant you and/or your employees permission to operate the vehicle herein described on streets, highways or elsewhere for the purpose of testing and/or inspection. An express mechanic's lien is hereby acknowledged on above vehicle to secure the amount of repairs thereto.
+        </div>
+      </div>
+
+      <div class="signature-area">
+        <div class="signature-box">
+          <div class="signature-line"></div>
+          <div class="signature-label">Service Advisor Signature</div>
+        </div>
+        <div class="signature-box">
+          <div class="signature-line"></div>
+          <div class="signature-label">Customer Signature</div>
+        </div>
+      </div>
+
+      <div class="barcode">*JC-2025-00123*</div> <!-- Dynamic Data -->
+
+      <div class="microprint">
+        GARAGE TANZANIA LTD | JOB CARD | DOCUMENT ID: JC-2025-00123 | ISSUED: 16/05/2025<br>
+        THIS DOCUMENT IS FOR INTERNAL USE AND CUSTOMER AUTHORIZATION. ESTIMATES ARE SUBJECT TO CHANGE.<br>
+        © 2025 GARAGE TANZANIA LTD. ALL RIGHTS RESERVED. | PLEASE RETAIN A COPY FOR YOUR RECORDS.
+      </div>
+
+      <div class="footer-note">
+        Thank you for choosing GARAGE Tanzania Ltd. We appreciate your trust in our services.
+      </div>
+    </div>
+
+    <div class="invoice-footer">
+      <div class="verification">
+        <div class="verification-code">Internal Job Card: {{JOB_CARD_ID}}</div> <!-- Dynamic -->
+        <span style="font-size: 12px; color: #555;">Mechanic Assigned: {{MECHANIC_NAME}}</span> <!-- Dynamic -->
+      </div>
+      <div id="qrcode-bottom"></div> <!-- QR code for Job Card Link -->
+    </div>
+  </div>
+
+  <script>
+    // Generate QR codes - Placeholder data, will be dynamic
+    var jobCardId = "JC-2025-00123"; // This should be dynamic
+    var verificationLink = "https://verify.tra.go.tz/placeholder_for_jobcard_verification_if_any"; // Placeholder
+
+    if (document.getElementById("qrcode-top")) {
+        new QRCode(document.getElementById("qrcode-top"), {
+          text: "https://GARAGE-tz.com/jobcard/" + jobCardId, // Dynamic Link
+          width: 75, height: 75,
+          colorDark: "#eb0a1e",
+          colorLight: "rgba(255,255,255,0.9)",
+          correctLevel: QRCode.CorrectLevel.H
+        });
+    }
+
+    if (document.getElementById("qrcode-bottom")) {
+        new QRCode(document.getElementById("qrcode-bottom"), {
+          text: verificationLink, // Dynamic Link
+          width: 85, height: 85,
+          colorDark: "#222",
+          colorLight: "rgba(255,255,255,0.9)",
+          correctLevel: QRCode.CorrectLevel.H
+        });
+    }
+
+    // Add print button functionality (optional, can be handled by browser print)
+    // function printJobCard() {
+    //   window.print();
+    // }
+    // Example: <button onclick="printJobCard()">Print Job Card</button> could be added somewhere.
+  </script>
+</body>
+</html>
